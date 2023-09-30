@@ -5,7 +5,7 @@ export default class SkyHighBuilding extends Building {
     super();
     this._sqft = sqft;
     this._floors = floors;
-    this.str = 'Evacuate slowly the NUMBER_OF_FLOORS floors';
+    this._str = 'Evacuate slowly the NUMBER_OF_FLOORS floors';
   }
 
   get sqft() {
@@ -17,6 +17,6 @@ export default class SkyHighBuilding extends Building {
   }
 
   evacuationWarningMessage() {
-    return this.str;
+    return this._str;
   }
 }

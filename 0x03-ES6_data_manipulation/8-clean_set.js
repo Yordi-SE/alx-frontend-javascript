@@ -1,12 +1,10 @@
 export default function cleanSet(set, startString) {
-  const sum = [];
-  if (!(startString)) {
-    return '';
-  }
-  for (const a of set) {
-    if (a.startsWith(startString)){
-      sum.push(a.slice(startString.length));
-    }
-  }
-  return sum.join('-');
+  if (!startString || !startString.length || typeof startString !== 'string') return '';
+
+  let finalString = '';
+  set.forEach((element) => {
+    if (element && element.startsWith(startString)) finalString += `${element.slice(startString.length)}-`;
+  });
+
+  return finalString.slice(0, finalString.length - 1);
 }

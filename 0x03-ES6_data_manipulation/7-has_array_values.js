@@ -1,7 +1,6 @@
-export default function hasValuesFromArray(set, array) {
-  const set2 = new Set(array);
-  for (const a of set2) {
-    if (!(set.has(a))) {
+export default function hasValuesFromArray(s, arr) {
+  for (const i of arr) {
+    if (!s.has(i)) {
       return false;
     }
   }

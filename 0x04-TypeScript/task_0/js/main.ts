@@ -1,48 +1,37 @@
 interface Student {
-    firstName: string,
-    lastName: string,
-    age: number,
-    location: string
+  firstName: string;
+  lastName: string;
+  age: number;
+  location: string;
 }
 
-const [student1, student2] = [
-    {
-        firstName: "Gon",
-        lastName: "Freecs",
-        age: 12,
-        location: "New-York"
-    },
-    {
-        firstName: "Suzan",
-        lastName: "Storm",
-        age: 30,
-        location: "Amsterdam"
-    }
-]
+const student1: Student = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 25,
+  location: "New York"
+};
 
-const studentsList: Array<Student> = [student1, student2];
+const student2: Student = {
+  firstName: "Jane",
+  lastName: "Doe",
+  age: 23,
+  location: "London"
+};
 
-const body: HTMLBodyElement = document.getElementsByTagName("body")[0];
-const table: HTMLTableElement = document.createElement("table");
-const thead: HTMLTableSectionElement = document.createElement("thead");
-const tbody: HTMLTableSectionElement = document.createElement("tbody");
-const rowHead: HTMLTableRowElement = thead.insertRow(0);
-const firstCellHead: HTMLTableCellElement = rowHead.insertCell(0);
-const secondCellHead: HTMLTableCellElement = rowHead.insertCell(1);
+const studentsList: Student[] = [student1, student2];
 
-firstCellHead.innerHTML = "firstName";
-secondCellHead.innerHTML = "location";
-table.append(thead);
+function renderTable() {
+  const table = document.createElement("table");
+  studentsList.forEach(student => {
+    const row = table.insertRow();
+    const firstNameCell = row.insertCell();
+    firstNameCell.innerHTML = student.firstName;
+    const locationCell = row.insertCell();
+    locationCell.innerHTML = student.location;
+  });
+  document.body.appendChild(table);
+}
 
+renderTable();
 
-studentsList.forEach(student => {
-    const row: HTMLTableRowElement = tbody.insertRow(0);
-    const firstCell: HTMLTableCellElement = row.insertCell(0);
-    const secondCell: HTMLTableCellElement = row.insertCell(1);
-
-    firstCell.innerHTML = student.firstName;
-    secondCell.innerHTML = student.location;
-});
-
-table.append(tbody);
-body.append(table);

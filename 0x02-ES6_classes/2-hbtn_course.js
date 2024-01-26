@@ -1,16 +1,7 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    if (typeof name !== 'string') {
-      throw new Error('Name must be a string');
-    } else if (typeof length !== 'number') {
-      throw new Error('Length must be a number');
-    } else if (!(students instanceof Array)) {
-      throw new Error('Students must be a Array of Strings');
-    }
-    for (const a of students) {
-      if (typeof a !== 'string') {
-        throw new Error('Students must be a Array of Strings');
-      }
+    if (typeof name !== 'string' || typeof length !== 'number' || !Array.isArray(students)) {
+      throw new Error('Invalid input type');
     }
     this._name = name;
     this._length = length;
@@ -23,7 +14,7 @@ export default class HolbertonCourse {
 
   set name(value) {
     if (typeof value !== 'string') {
-      throw new Error('Name must be a string');
+      throw new Error('Invalid input type');
     }
     this._name = value;
   }
@@ -34,7 +25,7 @@ export default class HolbertonCourse {
 
   set length(value) {
     if (typeof value !== 'number') {
-      throw new Error('Length must be a number');
+      throw new Error('Invalid input type');
     }
     this._length = value;
   }
@@ -44,13 +35,8 @@ export default class HolbertonCourse {
   }
 
   set students(value) {
-    if (!(value instanceof Array)) {
-      throw new Error('Students must be a Array of Strings');
-    }
-    for (const a of value) {
-      if (typeof a !== 'string') {
-        throw new Error('Students must be a Array of Strings');
-      }
+    if (!Array.isArray(value)) {
+      throw new Error('Invalid input type');
     }
     this._students = value;
   }
